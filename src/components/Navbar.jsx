@@ -24,7 +24,7 @@ const Navbar = () => {
               to="/"
               className="text-2xl font-bold text-gray-800 tracking-wider"
             >
-              MyApp
+              Blog App
             </Link>
           </div>
 
