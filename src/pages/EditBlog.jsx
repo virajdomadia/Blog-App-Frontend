@@ -21,7 +21,7 @@ const EditBlog = () => {
       try {
         setIsLoading(true);
         const response = await axios.get(
-          `http://localhost:5000/api/blogs/${id}`,
+          `https://blog-app-backend-nnuo.onrender.com/api/blogs/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
