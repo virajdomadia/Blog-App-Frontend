@@ -48,37 +48,43 @@ const ViewBlog = () => {
   };
 
   if (!blog) {
-    return <div>Loading...</div>;
+    return <div className="text-center py-10">Loading...</div>;
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-4xl font-bold">{blog.title}</h1>
-      <p className="text-gray-500">Category: {blog.category}</p>
-      <p className="text-gray-600 mt-4">{blog.content}</p>
+    <div className="max-w-4xl mx-auto p-4 bg-white shadow-lg rounded-lg mt-6">
+      <h1 className="text-5xl font-bold text-gray-800">{blog.title}</h1>
+      <p className="text-gray-500 mt-2">Category: {blog.category}</p>
+      <div className="border-t my-4"></div>
+      <p className="text-gray-700 text-lg leading-relaxed">{blog.content}</p>
       <div className="mt-4">
         <strong>Tags: </strong>
         {blog.tags.map((tag, index) => (
-          <span key={index} className="bg-gray-200 px-2 py-1 rounded mr-2">
+          <span
+            key={index}
+            className="bg-gray-200 text-sm px-3 py-1 rounded-full mr-2"
+          >
             {tag}
           </span>
         ))}
       </div>
-      <button
-        onClick={() => navigate(`/edit/${id}`)}
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-4 mr-2"
-      >
-        Edit
-      </button>
-      <button
-        onClick={handleDelete}
-        className="bg-red-600 text-white px-4 py-2 rounded mt-4"
-      >
-        Delete
-      </button>
+      <div className="mt-6 flex space-x-4">
+        <button
+          onClick={() => navigate(`/edit/${id}`)}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md shadow-md transition duration-300"
+        >
+          Edit
+        </button>
+        <button
+          onClick={handleDelete}
+          className="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-md shadow-md transition duration-300"
+        >
+          Delete
+        </button>
+      </div>
 
       {/* Comment Section */}
-      <div className="mt-8">
+      <div className="mt-10">
         <CommentSection blogId={id} />
       </div>
     </div>

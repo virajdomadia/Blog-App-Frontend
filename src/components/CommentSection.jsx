@@ -61,13 +61,16 @@ const CommentSection = ({ blogId }) => {
   };
 
   return (
-    <div className="mt-6">
+    <div className="bg-gray-50 p-6 rounded-lg shadow-md">
       <h3 className="text-2xl font-semibold mb-4">Comments</h3>
 
       {comments.length > 0 ? (
         comments.map((comment) => (
-          <div key={comment._id} className="mb-4 p-4 border rounded-lg">
-            <p className="text-lg">{comment.content}</p>
+          <div
+            key={comment._id}
+            className="mb-4 p-4 bg-white rounded-lg shadow-sm border"
+          >
+            <p className="text-gray-800">{comment.content}</p>
             <small className="text-gray-500">- {comment.user.username}</small>
           </div>
         ))
@@ -77,7 +80,7 @@ const CommentSection = ({ blogId }) => {
 
       <form onSubmit={handleAddComment} className="mt-4">
         <textarea
-          className="w-full p-2 border rounded-md"
+          className="w-full p-3 border rounded-md shadow-sm focus:outline-none focus:border-blue-500"
           placeholder="Add a comment..."
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
@@ -85,7 +88,7 @@ const CommentSection = ({ blogId }) => {
         />
         <button
           type="submit"
-          className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          className="mt-2 px-4 py-2 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 transition duration-300"
         >
           Submit
         </button>
