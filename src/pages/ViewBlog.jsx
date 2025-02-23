@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import CommentSection from "../components/CommentSection";
 
 const ViewBlog = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const navigate = useNavigate();
 
+  // Fetching the blog post
   useEffect(() => {
     const fetchBlog = async () => {
       try {
@@ -26,6 +28,7 @@ const ViewBlog = () => {
     fetchBlog();
   }, [id]);
 
+  // Handling the deletion of the blog post
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this blog post?")) {
       try {
@@ -73,6 +76,11 @@ const ViewBlog = () => {
       >
         Delete
       </button>
+
+      {/* Comment Section */}
+      <div className="mt-8">
+        <CommentSection blogId={id} />
+      </div>
     </div>
   );
 };
